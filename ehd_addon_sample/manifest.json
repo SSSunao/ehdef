@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "EH Downloader - Simple",
+  "version": "1.0.0",
+  "description": "Simple E-Hentai gallery downloader (stable, minimal).",
+  "permissions": [
+    "downloads",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://e-hentai.org/*",
+    "https://exhentai.org/*",
+    "https://*.ehgt.org/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://e-hentai.org/*", "https://exhentai.org/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
